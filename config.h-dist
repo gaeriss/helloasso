@@ -1,0 +1,9 @@
+#ifndef H_CONFIG_20230504
+#define H_CONFIG_230504
+
+#define WIFI_SSID ""
+#define WIFI_PSK ""
+#define PIXELS_PIN 2
+#define NB_PIXELS 5
+
+#endif /* H_CONFIG_230504 */
