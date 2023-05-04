@@ -1,3 +1,15 @@
+CARGO_FLAGS?=
+
+.DEFAULT_GOAL := build
+
+ifeq ($(APP_ENVIRONMENT),prod)
+	CARGO_FLAGS+=--release
+endif
+
+build:
+	cargo build $(CARGO_FLAGS)
+.PHONY: build
+
 fw: build/helloasso.ino.bin
 .PHONY: fw
 

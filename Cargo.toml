@@ -1,0 +1,17 @@
+[package]
+name = "helloasso"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+env_logger = "0.10"
+envir = "0.2"
+attohttpc = "0.25"
+scraper = "0.16"
+serde_json = "1.0.96"
+regex = "1.8.1"
+thiserror = "1.0.40"
+log = "0.4.17"
+
+[dependencies.actix-web]
+version = "4.0"

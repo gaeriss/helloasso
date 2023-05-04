@@ -1,3 +1,6 @@
+/.env
 /build
+/Cargo.lock
 /cache
 /config.h
+/target
