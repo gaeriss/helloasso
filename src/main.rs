@@ -49,9 +49,11 @@ fn objective(document: &scraper::Html) -> Result<i32> {
 }
 
 fn scrape_number(document: &scraper::Html, selector: &str) -> Result<i32> {
-    let number = scrape(document, selector)?;
+    static REGEX: std::sync::OnceLock<regex::Regex> = std::sync::OnceLock::new();
 
-    let regex = regex::Regex::new(r#"[^\d]+"#)?;
+    let number = scrape(document, selector)?;
+    let regex = REGEX.get_or_init(|| regex::Regex::new(r#"[^\d]+"#).unwrap());
+
     regex
         .replace_all(&number, "")
         .parse()
