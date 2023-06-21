@@ -38,21 +38,22 @@ async fn campaign() -> Result<actix_web::HttpResponse> {
 }
 
 fn funded(document: &scraper::Html) -> Result<i32> {
-    scrape(
+    scrape_number(
         document,
         ".CampaignContent .CardNumbersSticky .CardNumbers--Main span b:nth-child(2)",
-    )?
-    .trim_end_matches('€')
-    .parse()
-    .map_err(Error::from)
+    )
 }
 
 fn objective(document: &scraper::Html) -> Result<i32> {
-    let objective = scrape(document, ".CampaignCards .CardNumbers--Goal")?;
+    scrape_number(document, ".CampaignCards .CardNumbers--Goal")
+}
+
+fn scrape_number(document: &scraper::Html, selector: &str) -> Result<i32> {
+    let number = scrape(document, selector)?;
 
     let regex = regex::Regex::new(r#"[^\d]+"#)?;
     regex
-        .replace_all(&objective, "")
+        .replace_all(&number, "")
         .parse()
         .map_err(Error::from)
 }
