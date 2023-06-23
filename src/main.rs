@@ -44,8 +44,8 @@ fn funded(document: &scraper::Html) -> Result<i32> {
     )
 }
 
-fn objective(document: &scraper::Html) -> Result<i32> {
-    scrape_number(document, ".CampaignCards .CardNumbers--Goal")
+fn objective(_: &scraper::Html) -> Result<i32> {
+    Ok(18_000)
 }
 
 fn scrape_number(document: &scraper::Html, selector: &str) -> Result<i32> {
