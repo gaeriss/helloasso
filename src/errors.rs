@@ -7,7 +7,7 @@ pub enum Error {
     #[error("{0}")]
     Io(#[from] std::io::Error),
     #[error("{0}")]
-    ParseInt(#[from] std::num::ParseIntError),
+    ParseFloat(#[from] std::num::ParseFloatError),
     #[error("{0}")]
     Regex(#[from] regex::Error),
     #[error("{0}")]

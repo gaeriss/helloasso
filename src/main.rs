@@ -52,11 +52,12 @@ fn scrape_number(document: &scraper::Html, selector: &str) -> Result<i32> {
     static REGEX: std::sync::OnceLock<regex::Regex> = std::sync::OnceLock::new();
 
     let number = scrape(document, selector)?;
-    let regex = REGEX.get_or_init(|| regex::Regex::new(r#"[^\d]+"#).unwrap());
+    let regex = REGEX.get_or_init(|| regex::Regex::new(r#"[^\d^\.]+"#).unwrap());
 
     regex
         .replace_all(&number, "")
-        .parse()
+        .parse::<f32>()
+        .map(|x| x as i32)
         .map_err(Error::from)
 }
 
