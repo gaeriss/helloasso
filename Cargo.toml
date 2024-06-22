@@ -4,8 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-env_logger = "0.10"
-envir = "0.2"
+envir = "0.3"
 attohttpc = "0.26"
 scraper = "0.18"
 serde_json = "1.0.96"

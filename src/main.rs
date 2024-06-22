@@ -4,10 +4,7 @@ use errors::*;
 
 #[actix_web::main]
 async fn main() -> Result {
-    #[cfg(debug_assertions)]
-    envir::dotenv();
-
-    env_logger::init();
+    envir::init();
 
     let ip = envir::get("LISTEN_IP")?;
     let port = envir::get("LISTEN_PORT")?;
