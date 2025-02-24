@@ -6,7 +6,7 @@ edition = "2024"
 [dependencies]
 actix-web = "4.0"
 envir = "1.0"
-attohttpc = "0.28"
+attohttpc = "0.29"
 scraper = "0.22"
 serde_json = "1.0"
 regex = "1.8"
