@@ -46,9 +46,8 @@ fn objective(_: &scraper::Html) -> Result<i32> {
 }
 
 fn scrape_number(document: &scraper::Html, selector: &str) -> Result<i32> {
-    static REGEX: std::sync::LazyLock<regex::Regex> = std::sync::LazyLock::new(
-        || regex::Regex::new(r#"[^\d^\.]+"#).unwrap()
-    );
+    static REGEX: std::sync::LazyLock<regex::Regex> =
+        std::sync::LazyLock::new(|| regex::Regex::new(r#"[^\d^\.]+"#).unwrap());
 
     let number = scrape(document, selector)?;
 
